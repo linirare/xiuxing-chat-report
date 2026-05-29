@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>修行那些年 - 玩家聊天数据分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f7fb;color:#2c3e50;font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#1a3a5c,#2980b9);border-radius:12px;margin-bottom:24px;box-shadow:0 2px 12px rgba(41,128,185,0.15)}
+.header h1{font-size:2em;color:#fff;margin-bottom:4px;letter-spacing:1px}
+.header p{color:rgba(255,255,255,0.7);font-size:0.95em}
+.stats-row{display:flex;justify-content:center;gap:30px;margin-top:24px;flex-wrap:wrap}
+.stat-item{text-align:center;background:rgba(255,255,255,0.12);border-radius:8px;padding:16px 28px;min-width:120px}
+.stat-item .num{font-size:2em;font-weight:700;color:#fff}
+.stat-item .label{color:rgba(255,255,255,0.75);font-size:0.8em;margin-top:2px}
+.section{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border:1px solid #e8ecf1}
+.section h2{color:#1a3a5c;font-size:1.1em;margin-bottom:16px;border-left:3px solid #2980b9;padding-left:12px;font-weight:600}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.chart-row{grid-template-columns:1fr}}
+.chart-box{background:#fafbfc;border-radius:8px;padding:16px;border:1px solid #eef1f5}
+.chart-box h3{color:#7f8c8d;font-size:0.85em;margin-bottom:12px;font-weight:500}
+.chart-box canvas{max-height:260px}
+table{width:100%;border-collapse:collapse;font-size:0.9em}
+th{color:#7f8c8d;font-weight:600;padding:10px 12px;text-align:left;border-bottom:2px solid #e8ecf1;font-size:0.85em}
+td{padding:9px 12px;border-bottom:1px solid #f0f2f5;color:#2c3e50}
+tr:hover td{background:#f8faff}
+.rank-num{color:#2980b9;font-weight:700;width:30px}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:6px}
+.tag{padding:3px 10px;border-radius:12px;background:#eef1f5;color:#5a6a7a;font-size:0.82em}
+.tag.hot{background:#2980b9;color:#fff;font-size:1em;font-weight:600}
+.tag.warm{background:#d4e6f1;color:#1a3a5c;font-weight:500}
+.footer{text-align:center;padding:20px;color:#b0b8c4;font-size:0.8em}
+
+/* 心理卡片 */
+.psych-card{background:#fafbfc;border-radius:8px;padding:16px 18px;margin-bottom:10px;border:1px solid #eef1f5}
+.psych-card .header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.psych-card .cat-name{font-weight:600;font-size:0.95em}
+.psych-card .cat-count{font-weight:600;font-size:0.85em}
+.psych-card .cat-desc{color:#5a6a7a;font-size:0.85em;line-height:1.6;margin-bottom:4px}
+.psych-card .cat-samples{color:#95a5a6;font-size:0.8em;font-style:italic}
+
+/* 洞察卡片 */
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:768px){.insight-grid{grid-template-columns:1fr 1fr}}
+.insight-card{background:#fafbfc;border-radius:8px;padding:16px;text-align:center;border:1px solid #eef1f5}
+.insight-card .num{font-size:1.8em;font-weight:700;color:#2980b9}
+.insight-card .label{color:#5a6a7a;font-size:0.82em;margin:4px 0;font-weight:500}
+.insight-card .desc{color:#95a5a6;font-size:0.78em}
+
+/* 核心发现 */
+.findings-box{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;border:1px solid #e8ecf1;box-shadow:0 1px 6px rgba(0,0,0,0.06)}
+.findings-box h2{color:#1a3a5c;font-size:1.1em;margin-bottom:16px;border-left:3px solid #2980b9;padding-left:12px;font-weight:600}
+.findings-box li{color:#2c3e50;padding:8px 0 8px 24px;font-size:0.9em;line-height:1.6;list-style:none;position:relative;border-bottom:1px solid #f0f2f5}
+.findings-box li:last-child{border-bottom:none}
+.findings-box li::before{content:'▸';position:absolute;left:0;color:#2980b9;font-weight:700}
+
+/* 话题进度条 */
+.topic-bar{display:flex;gap:8px;align-items:center;margin:5px 0}
+.topic-bar .lbl{width:80px;font-size:0.85em;color:#5a6a7a}
+.topic-bar .bg{flex:1;height:22px;background:#eef1f5;border-radius:4px;overflow:hidden}
+.topic-bar .fill{height:100%;border-radius:4px;transition:width 0.6s}
+.topic-bar .pct{width:45px;text-align:right;font-size:0.85em;color:#95a5a6}
+
+/* 负面分类 */
+.neg-cat{margin-bottom:14px}
+.neg-cat .hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.neg-cat .hdr .nm{font-weight:600;font-size:0.88em}
+.neg-cat .hdr .ct{font-weight:600;font-size:0.82em}
+.neg-cat .bar{height:5px;background:#eef1f5;border-radius:3px;overflow:hidden;margin-bottom:4px}
+.neg-cat .bar .fl{height:100%;border-radius:3px}
+.neg-cat .smpl{color:#95a5a6;font-size:0.8em}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>修行那些年</h1>
+  <p>玩家聊天数据分析报告 · 2026.05.28 - 2026.05.29</p>
+  <div class="stats-row" id="statsRow"></div>
+</div>
+
+<div class="section">
+  <h2>时段活跃分布</h2>
+  <div class="chart-box"><canvas id="hourlyChart"></canvas></div>
+</div>
+
+<div class="chart-row">
+  <div class="section">
+    <h2>聊天类型分布</h2>
+    <div class="chart-box"><canvas id="chatTypeChart"></canvas></div>
+  </div>
+  <div class="section">
+    <h2>注册渠道分布</h2>
+    <div class="chart-box"><canvas id="channelChart"></canvas></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>活跃玩家 TOP15</h2>
+  <table><thead><tr><th>#</th><th>玩家昵称</th><th>发言数</th><th>占比</th></tr></thead><tbody id="playerTable"></tbody></table>
+</div>
+
+<div class="section">
+  <h2>玩家反馈与心理分析</h2>
+  <div id="psychSection"></div>
+</div>
+
+<div class="section">
+  <h2>玩家行为洞察</h2>
+  <div class="insight-grid" id="behaviorGrid"></div>
+</div>
+
+<div class="findings-box">
+  <h2>核心数据洞察与建议</h2>
+  <ul id="insightList"></ul>
+</div>
+
+<div class="chart-row">
+  <div class="section">
+    <h2>热点话题分布</h2>
+    <div id="topicBars"></div>
+  </div>
+  <div class="section">
+    <h2>高频关键词 TOP20</h2>
+    <div class="tag-cloud" id="tagCloud"></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>负面反馈分类汇总（共 <span id="negTotal"></span> 条）</h2>
+  <div id="negList"></div>
+</div>
+
+<div class="footer">修行那些年 · 玩家聊天数据分析 · 2026-05-29</div>
+</div>
+
+<script>
+fetch('./data.json?v=2&'+Date.now()).then(r=>r.json()).then(d=>{
+  document.getElementById('statsRow').innerHTML=`
+    <div class=stat-item><div class=num>${d.total}</div><div class=label>总消息量</div></div>
+    <div class=stat-item><div class=num>${d.players}</div><div class=label>发言玩家</div></div>
+    <div class=stat-item><div class=num>${d.negCount}</div><div class=label>吐槽消息</div></div>
+    <div class=stat-item><div class=num>${d.peakHour}:00</div><div class=label>最活跃时段</div></div>`;
+
+  new Chart(document.getElementById('hourlyChart'),{type:'bar',data:{labels:Object.keys(d.hourly).map(h=>h+':00'),datasets:[{data:Object.values(d.hourly),backgroundColor:Object.values(d.hourly).map(v=>v===Math.max(...Object.values(d.hourly))?'#2980b9':'#d4e6f1'),borderRadius:3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#95a5a6'},grid:{color:'#f0f2f5'}},y:{ticks:{color:'#95a5a6'},grid:{color:'#f0f2f5'}}}}});
+
+  new Chart(document.getElementById('chatTypeChart'),{type:'doughnut',data:{labels:Object.keys(d.chatType),datasets:[{data:Object.values(d.chatType),backgroundColor:['#2980b9','#7fb3d8','#d4e6f1'],borderWidth:0}]},options:{plugins:{legend:{position:'bottom',labels:{color:'#5a6a7a',padding:12}}}}});
+
+  new Chart(document.getElementById('channelChart'),{type:'doughnut',data:{labels:Object.keys(d.channels),datasets:[{data:Object.values(d.channels),backgroundColor:['#1a3a5c','#2980b9','#4a9bc7','#7fb3d8','#a8cce5','#d4e6f1'],borderWidth:0}]},options:{plugins:{legend:{position:'bottom',labels:{color:'#5a6a7a',padding:12}}}}});
+
+  const tb=document.getElementById('playerTable');
+  d.topPlayers.forEach((p,i)=>{
+    tb.innerHTML+=`<tr><td class=rank-num>${i+1}</td><td>${p.name}</td><td>${p.count}</td><td>${(p.count/d.total*100).toFixed(1)}%</td></tr>`;
+  });
+
+  // 心理分析
+  const ps=document.getElementById('psychSection');
+  d.psychAnalysis.forEach(c=>{
+    ps.innerHTML+=`<div class=psych-card><div class=header-row><span class=cat-name style="color:${c.color}">${c.name}</span><span class=cat-count style="color:${c.color}">${c.count}条（${c.pct}%）</span></div><div class=cat-desc>${c.desc}</div><div class=cat-samples>${c.samples.map(s=>'「'+s+'」').join(' · ')}</div></div>`;
+  });
+
+  // 行为洞察
+  const bg=document.getElementById('behaviorGrid');
+  const b=d.behavior;
+  bg.innerHTML=`
+    <div class=insight-card><div class=num>${b.avgMsgsPerPlayer}</div><div class=label>人均发言</div><div class=desc>活跃度指标</div></div>
+    <div class=insight-card><div class=num>${b.heavyUserCount}</div><div class=label>高频玩家（>100条）</div><div class=desc>占${b.heavyUserPct}%</div></div>
+    <div class=insight-card><div class=num>${b.lightUserCount}</div><div class=label>低频玩家（≤2条）</div><div class=desc>占${b.lightUserPct}%</div></div>
+    <div class=insight-card><div class=num>${b.helpSeeking}</div><div class=label>求助/攻略</div><div class=desc>新手引导缺口</div></div>
+    <div class=insight-card><div class=num>${b.friendRequests}</div><div class=label>社交请求</div><div class=desc>加好友/组队</div></div>
+    <div class=insight-card><div class=num>${b.shareBehavior}</div><div class=label>坐标/物品分享</div><div class=desc>分享行为</div></div>
+    <div class=insight-card><div class=num>${b.nightPct}%</div><div class=label>夜间活跃（23-4时）</div><div class=desc>${b.nightMsgs}条消息</div></div>
+    <div class=insight-card><div class=num>${b.peakHourPct}%</div><div class=label>高峰集中度</div><div class=desc>15时 ${b.peakHourMsgs}条</div></div>
+    <div class=insight-card><div class=num>${Object.keys(b.chatMethods).length}</div><div class=label>聊天方式种类</div><div class=desc>含坐标/兵器/灵兽</div></div>`;
+
+  // 核心洞察
+  const il=document.getElementById('insightList');
+  const ins=d.insights;
+  [`渠道集中度极高：渠道${ins.topChannel}占总发言 ${ins.channelConcentration}%，存在单渠道依赖风险。建议拓展其他渠道量级，降低单点风险。`,
+    `时段高度集中：TOP3活跃时段（${ins.topHours.join(':00、')}:00）占总消息量 ${ins.timeConcentration}%。建议高峰时段加大运营投放，低峰时段补充离线/挂机玩法。`,
+    `社交需求未被满足：${ins.socialRatio}%的消息涉及社交行为（加好友、分享），游戏内缺乏结构化社交匹配机制。建议增加帮派/师徒等社交系统。`,
+    `新手引导不足：${ins.helpRatio}%的消息为求助/攻略类，玩家在金丹→元婴阶段频繁卡关。建议优化引导曲线，降低该阶段难度陡增。`,
+    `付费设计触发负面情绪：自动功能捆绑月卡引发强烈损失厌恶。建议将基础自动功能免费化，高级自动作为付费增值。`,
+    `人均仅 ${ins.msgPerPlayer} 条消息，224人中头部15人贡献大部分内容，大量玩家沉默。建议通过话题引导、活动奖励提升普通玩家参与度。`
+  ].forEach(t=>{il.innerHTML+=`<li>${t}</li>`});
+
+  // 话题
+  const td=document.getElementById('topicBars');
+  const tc={'玩法/攻略':'#2980b9','吐槽/BUG':'#e74c3c','活动/充值':'#f39c12','坐标分享':'#27ae60','社交/组队':'#8e44ad'};
+  const mt=Math.max(...Object.values(d.topics));
+  Object.entries(d.topics).forEach(([k,v])=>{
+    td.innerHTML+=`<div class=topic-bar><div class=lbl>${k}</div><div class=bg><div class=fill style="width:${v/mt*100}%;background:${tc[k]||'#2980b9'}"></div></div><div class=pct>${(v/d.total*100).toFixed(1)}%</div></div>`;
+  });
+
+  // 关键词
+  const tg=document.getElementById('tagCloud');
+  const mw=Math.max(...d.topWords.map(w=>w.count));
+  d.topWords.forEach(w=>{
+    tg.innerHTML+=`<span class="${w.count/mw>0.5?'tag hot':w.count/mw>0.25?'tag warm':'tag'}">${w.word}</span>`;
+  });
+
+  // 负面
+  const nc={'月卡/付费捆绑':'#e74c3c','BOSS/战斗体验':'#e67e22','主线/剧情':'#3498db','机制/平衡':'#9b59b6','画风不符预期':'#e74c3c','其他':'#95a5a6'};
+  document.getElementById('negTotal').textContent=d.negCount;
+  const nd=document.getElementById('negList');
+  d.negSummary.forEach(c=>{
+    nd.innerHTML+=`<div class=neg-cat><div class=hdr><span class=nm style="color:${nc[c.name]||'#95a5a6'}">${c.name}</span><span class=ct style="color:${nc[c.name]||'#95a5a6'}">${c.count}条</span></div><div class=bar><div class=fl style="width:${c.pct}%;background:${nc[c.name]||'#95a5a6'}"></div></div><div class=smpl>${c.samples.map(s=>'「'+s+'」').join(' · ')}</div></div>`;
+  });
+});
+</script>
+</body>
+</html>
