@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《修行那些年》5月29日 · 精装分析报告</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%); color:#e2e8f0; padding:20px; }
+.container { max-width:900px; margin:0 auto; }
+.header { text-align:center; padding:40px 20px 30px; background:linear-gradient(135deg,#1e3a5f 0%,#0f2027 100%); border-radius:20px; margin-bottom:24px; border:1px solid rgba(255,255,255,0.06); }
+.header h1 { font-size:22px; font-weight:700; background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:6px; }
+.header .sub { font-size:13px; color:#94a3b8; }
+.card { background:linear-gradient(135deg,#1e293b 0%,#1a2235 100%); border-radius:16px; padding:24px; margin-bottom:16px; border:1px solid rgba(255,255,255,0.06); }
+.card-title { font-size:15px; font-weight:700; color:#60a5fa; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.card-title .badge { background:#334155; color:#94a3b8; font-size:11px; padding:1px 10px; border-radius:10px; font-weight:400; }
+.stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; }
+.stat-item { text-align:center; padding:14px 8px; background:rgba(255,255,255,0.03); border-radius:12px; }
+.stat-num { font-size:28px; font-weight:700; color:#f1f5f9; }
+.stat-label { font-size:11px; color:#94a3b8; margin-top:2px; }
+.hour-bar { display:flex; align-items:center; margin:3px 0; font-size:12px; }
+.hour-label { width:32px; color:#94a3b8; flex-shrink:0; }
+.hour-fill { height:18px; background:linear-gradient(90deg,#3b82f6,#8b5cf6); border-radius:3px; min-width:4px; flex-shrink:0; }
+.hour-count { color:#94a3b8; margin-left:6px; white-space:nowrap; }
+.hour-desc { font-size:10px; color:#64748b; margin-left:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.topic-card { background:rgba(255,255,255,0.03); border-radius:12px; padding:16px; margin-bottom:10px; border-left:3px solid #3b82f6; }
+.topic-card.red { border-left-color:#ef4444; }
+.topic-card.green { border-left-color:#22c55e; }
+.topic-card.yellow { border-left-color:#eab308; }
+.topic-card.purple { border-left-color:#a855f7; }
+.topic-title { font-size:14px; font-weight:600; margin-bottom:6px; color:#f1f5f9; }
+.topic-desc { font-size:12px; color:#94a3b8; line-height:1.7; }
+.topic-tag { display:inline-block; font-size:10px; padding:1px 8px; border-radius:8px; margin-bottom:6px; }
+.tag-red { background:rgba(239,68,68,0.15); color:#fca5a5; }
+.tag-green { background:rgba(34,197,94,0.15); color:#86efac; }
+.tag-yellow { background:rgba(234,179,8,0.15); color:#fde047; }
+.tag-purple { background:rgba(168,85,247,0.15); color:#d8b4fe; }
+.member-bar { display:flex; align-items:center; margin:3px 0; font-size:12px; }
+.member-name { width:90px; flex-shrink:0; color:#e2e8f0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.member-fill { height:16px; background:linear-gradient(90deg,#6366f1,#a855f7); border-radius:3px; min-width:4px; flex-shrink:0; }
+.member-count { color:#94a3b8; margin-left:6px; white-space:nowrap; }
+.member-desc { font-size:10px; color:#64748b; margin-left:6px; }
+.feedback-item { padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:12px; line-height:1.6; }
+.feedback-item:last-child { border-bottom:none; }
+.fb-status { display:inline-block; font-size:10px; padding:0 6px; border-radius:4px; margin-right:6px; }
+.fb-done { background:rgba(34,197,94,0.15); color:#86efac; }
+.fb-warn { background:rgba(234,179,8,0.15); color:#fde047; }
+.fb-progress { background:rgba(59,130,246,0.15); color:#93c5fd; }
+.insight-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:600px) { .insight-grid { grid-template-columns:1fr; } body { padding:10px; } .card { padding:16px; } .member-name { width:70px; } .stat-grid { grid-template-columns:repeat(3,1fr); } }
+.risk-item { font-size:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); color:#94a3b8; }
+.pos-item { font-size:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); color:#94a3b8; }
+.risk-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+.risk-red { background:#ef4444; }
+.risk-yellow { background:#eab308; }
+.risk-green { background:#22c55e; }
+.cat-bar { display:flex; align-items:center; margin:4px 0; font-size:12px; }
+.cat-label { width:110px; flex-shrink:0; color:#e2e8f0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.cat-fill { height:18px; background:linear-gradient(90deg,#3b82f6,#06b6d4); border-radius:3px; min-width:4px; flex-shrink:0; }
+.cat-count { color:#94a3b8; margin-left:6px; white-space:nowrap; }
+.kw-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.kw-item { background:rgba(59,130,246,0.1); color:#93c5fd; font-size:11px; padding:2px 10px; border-radius:12px; }
+.footer-text { text-align:center; font-size:10px; color:#475569; padding:20px 0 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🎮 《修行那些年》5月29日 · 群聊精装分析报告</h1>
+  <div class="sub">开服次日 · 00:00 ~ 23:52 · 共1933条文本消息 · 105人参与</div>
+</div>
+
+<!-- 📊 数据概览 -->
+<div class="card">
+  <div class="card-title">📊 数据概览 <span class="badge">与首日对比</span></div>
+  <div class="stat-grid">
+    <div class="stat-item"><div class="stat-num">1,933</div><div class="stat-label">文本消息 ↑222%</div></div>
+    <div class="stat-item"><div class="stat-num">172</div><div class="stat-label">图片消息 ↑157%</div></div>
+    <div class="stat-item"><div class="stat-num">105</div><div class="stat-label">发言人数 ↑200%</div></div>
+    <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">新人入群 ↓100%</div></div>
+    <div class="stat-item"><div class="stat-num">590</div><div class="stat-label">峰值 条/时 🔥</div></div>
+    <div class="stat-item"><div class="stat-num">2577</div><div class="stat-label">总事件数</div></div>
+  </div>
+</div>
+
+<!-- 📈 时段活跃 -->
+<div class="card">
+  <div class="card-title">📈 时段活跃 <span class="badge">峰值 17:00 · 590条</span></div>
+  <div class="hour-bar"><span class="hour-label">00</span><span class="hour-fill" style="width:6px"></span><span class="hour-count">10</span></div>
+  <div class="hour-bar"><span class="hour-label">01</span><span class="hour-fill" style="width:10px"></span><span class="hour-count">17</span></div>
+  <div class="hour-bar"><span class="hour-label">07</span><span class="hour-fill" style="width:16px"></span><span class="hour-count">26</span></div>
+  <div class="hour-bar"><span class="hour-label">08</span><span class="hour-fill" style="width:15px"></span><span class="hour-count">25</span></div>
+  <div class="hour-bar"><span class="hour-label">09</span><span class="hour-fill" style="width:58px"></span><span class="hour-count">97</span><span class="hour-desc">💬元婴卡级讨论</span></div>
+  <div class="hour-bar"><span class="hour-label">10</span><span class="hour-fill" style="width:46px"></span><span class="hour-count">76</span><span class="hour-desc">🚀二区10点开放</span></div>
+  <div class="hour-bar"><span class="hour-label">11</span><span class="hour-fill" style="width:24px"></span><span class="hour-count">40</span></div>
+  <div class="hour-bar"><span class="hour-label">12</span><span class="hour-fill" style="width:39px"></span><span class="hour-count">65</span></div>
+  <div class="hour-bar"><span class="hour-label">15</span><span class="hour-fill" style="width:55px"></span><span class="hour-count">91</span></div>
+  <div class="hour-bar"><span class="hour-label">16</span><span class="hour-fill" style="width:175px"></span><span class="hour-count">291</span><span class="hour-desc">🔥元婴卡级爆发</span></div>
+  <div class="hour-bar"><span class="hour-label">17</span><span class="hour-fill" style="width:300px"></span><span class="hour-count">590</span><span class="hour-desc">📢更新公告发布</span></div>
+  <div class="hour-bar"><span class="hour-label">18</span><span class="hour-fill" style="width:241px"></span><span class="hour-count">402</span><span class="hour-desc">⚔️国战+概率吐槽</span></div>
+  <div class="hour-bar"><span class="hour-label">19</span><span class="hour-fill" style="width:89px"></span><span class="hour-count">148</span><span class="hour-desc">🎭剧情互动</span></div>
+  <div class="hour-bar"><span class="hour-label">20</span><span class="hour-fill" style="width:67px"></span><span class="hour-count">112</span><span class="hour-desc">🎯长春观BOSS</span></div>
+  <div class="hour-bar"><span class="hour-label">21</span><span class="hour-fill" style="width:91px"></span><span class="hour-count">152</span><span class="hour-desc">💡攻略互助</span></div>
+  <div class="hour-bar"><span class="hour-label">22</span><span class="hour-fill" style="width:22px"></span><span class="hour-count">36</span></div>
+  <div class="hour-bar"><span class="hour-label">23</span><span class="hour-fill" style="width:3px"></span><span class="hour-count">5</span></div>
+</div>
+
+<!-- 🔑 关键词分类 -->
+<div class="card">
+  <div class="card-title">🔑 话题分类统计 <span class="badge">161次最高</span></div>
+  <div class="cat-bar"><span class="cat-label">⚡元婴/卡级</span><span class="cat-fill" style="width:260px"></span><span class="cat-count">161次</span></div>
+  <div class="cat-bar"><span class="cat-label">🖱️肝度/操作</span><span class="cat-fill" style="width:236px"></span><span class="cat-count">146次</span></div>
+  <div class="cat-bar"><span class="cat-label">💰氪金/付费</span><span class="cat-fill" style="width:186px"></span><span class="cat-count">115次</span></div>
+  <div class="cat-bar"><span class="cat-label">🎲概率/抽奖</span><span class="cat-fill" style="width:181px"></span><span class="cat-count">112次</span></div>
+  <div class="cat-bar"><span class="cat-label">⚔️国战/阵营</span><span class="cat-fill" style="width:170px"></span><span class="cat-count">105次</span></div>
+  <div class="cat-bar"><span class="cat-label">📝建议反馈</span><span class="cat-fill" style="width:126px"></span><span class="cat-count">78次</span></div>
+  <div class="cat-bar"><span class="cat-label">🎨剧情/美术</span><span class="cat-fill" style="width:113px"></span><span class="cat-count">70次</span></div>
+  <div class="cat-bar"><span class="cat-label">🏙️二区/新区</span><span class="cat-fill" style="width:97px"></span><span class="cat-count">60次</span></div>
+  <div class="cat-bar"><span class="cat-label">⚡灵气/战斗</span><span class="cat-fill" style="width:47px"></span><span class="cat-count">29次</span></div>
+  <div class="kw-list">
+    <span class="kw-item">男儿立志(21)</span><span class="kw-item">暗号(14)</span><span class="kw-item">皮肤(6)</span>
+    <span class="kw-item">元婴(5)</span><span class="kw-item">灵石(6)</span><span class="kw-item">白发(5)</span>
+    <span class="kw-item">上不去(5)</span><span class="kw-item">管理(5)</span><span class="kw-item">群主(5)</span>
+  </div>
+</div>
+
+<!-- 🔥 热门话题 -->
+<div class="card">
+  <div class="card-title">🔥 热门话题 <span class="badge">8个话题</span></div>
+
+  <div class="topic-card red">
+    <span class="topic-tag tag-red">★ 今日核心事件</span>
+    <div class="topic-title">🚀 二区开放 & 玩家大迁徙</div>
+    <div class="topic-desc">
+      10:00 二区准时开放，大量一区玩家涌入。张某人、哟哟、雍和等核心玩家均尝试二区，
+      普遍认同"一区踩坑、二区重来"。但二区同样大唐霸榜，阵营失衡问题延续。
+      雍和担忧"感觉后面一区比不上二区了"。二区氪金力度不输一区。
+    </div>
+  </div>
+
+  <div class="topic-card red">
+    <span class="topic-tag tag-red">★ 最高频反馈</span>
+    <div class="topic-title">⚡ 元婴卡级 & "为什么不能重生"</div>
+    <div class="topic-desc">
+      开服次日大量玩家卡在金丹→元婴。前期给的突破丹药有限，新手不了解要集中养一个，
+      把丹药分散给多个角色升了筑基/金丹，形成死锁。华瑾反复追问30+次"为什么不能重生修士"，
+      情绪逐步升级。恭叔："卡牌养成资源重置，这很重要"。陈云河回应重生影响数值暂不能做。
+      雾随雨落、贰佰等证实0氪首日元婴是可行的，前提是"不乱用丹"。
+      画眉、房东、华瑾为代表的大量玩家承认"我用了丹药给其他人"。
+    </div>
+  </div>
+
+  <div class="topic-card green">
+    <span class="topic-tag tag-green">✅ 已上线</span>
+    <div class="topic-title">📢 17:00 更新 · 采集/传道十连优化</div>
+    <div class="topic-desc">
+      16:49 王孝语发布更新公告：① 采集和传道默认十次 ② 月卡升级为一键采集/传道。
+      玩家反应极其正面。贰佰："我一个堂堂元婴老祖都只能1块一块采"。
+      张某人："点了2天了"。朗朗："策划你早改不就好了"。
+      陌云表态"问题我们会努力改的"。从抱怨到修复仅用不到24小时。
+    </div>
+  </div>
+
+  <div class="topic-card red">
+    <span class="topic-tag tag-red">🔴 付费风险</span>
+    <div class="topic-title">🎲 小天师皮肤 · 概率信任危机</div>
+    <div class="topic-desc">
+      玩家L投入3万玉（约3000元）未抽到小天师皮肤："再存2500抽5次不出拉到"、
+      "这个坑很大"、"一个648才6480玉，一个皮肤是否太贵了"。天空飘来五个字5千玉无果，
+      雅乐标识2万玉无果。哟哟统计"没见过这么低的概率，几乎都是保底出"。
+      陌云解释"越抽概率越高是奖池逻辑"，但玩家普遍不信。
+      L明确表示1888礼包没买"气到了"，疑似濒临弃坑边缘。
+    </div>
+  </div>
+
+  <div class="topic-card yellow">
+    <span class="topic-tag tag-yellow">🟡 中长期风险</span>
+    <div class="topic-title">⚔️ 国家失衡 · 大唐独大困局</div>
+    <div class="topic-desc">
+      天空飘来五个字（大理）反复吐槽："根本抢不过大唐的，我大理就两三个在线"。
+      渊（大凉）："我大凉更没人"。多人被系统推荐奖励（100玉）误导选了弱国后悔不已。
+      陈云河澄清国战明天中午才正式开打。玩家呼吁赛季重置国家。
+      "别去人少的"已成为社区共识。
+    </div>
+  </div>
+
+  <div class="topic-card purple">
+    <span class="topic-tag tag-purple">🟢 亮点</span>
+    <div class="topic-title">🎨 剧情口碑大获好评</div>
+    <div class="topic-desc">
+      天空飘来五个字："给我七尺男儿看哭了"、"这剧情整挺好"。
+      -偶尔想起你-："小道士和姐姐这段漫画我看了鸡皮疙瘩都起来了"。
+      哟哟："有一说一，这个美术下功夫了"。陈云河深入参与剧情讨论：
+      黑白毛伏笔、王长生往事、李慕白背景，甚至分享童谣为团队原创。
+      叙事驱动型社群文化正在成形，或成为核心留存壁垒。
+    </div>
+  </div>
+
+  <div class="topic-card yellow">
+    <span class="topic-tag tag-yellow">⏳ 待观察</span>
+    <div class="topic-title">⚡ 灵气系统 · "修仙连蓝都没有"</div>
+    <div class="topic-desc">
+      哟哟持续输出：被打不回复灵气→全程平A；"这好歹也是修仙游戏，怎么还能卡灵气"；
+      "打不动完全打不动"。房东："这个灵力真得改改了，哪有打架光靠a的"。
+      王孝语回应"打怪消耗体力可恢复灵气"，玩家认为杯水车薪。
+    </div>
+  </div>
+
+  <div class="topic-card yellow">
+    <span class="topic-tag tag-yellow">⏳ 明日关键</span>
+    <div class="topic-title">🏰 国战前夕 · 焦虑与期待</div>
+    <div class="topic-desc">
+      陈云河明确：开服第三天出现，30日中午开打。弱国玩家焦虑被碾压。
+      哟哟"主国战估计人都要散光"，小米虫"天天被大佬追着杀吗"。
+      朗朗提出"赛季后重置合区"构思引起讨论。
+    </div>
+  </div>
+</div>
+
+<!-- 👤 最活跃成员 -->
+<div class="card">
+  <div class="card-title">👤 最活跃成员 Top 8 <span class="badge">天空飘来五个字 412条</span></div>
+  <div class="member-bar"><span class="member-name">天空飘来五个字</span><span class="member-fill" style="width:300px"></span><span class="member-count">412条</span><span class="member-desc">氪小几百/大理/深夜战神</span></div>
+  <div class="member-bar"><span class="member-name">哟哟</span><span class="member-fill" style="width:223px"></span><span class="member-count">306条</span><span class="member-desc">社区导师/攻略流/月卡</span></div>
+  <div class="member-bar"><span class="member-name">张某人🌳️🌳️</span><span class="member-fill" style="width:102px"></span><span class="member-count">140条</span><span class="member-desc">肝度反馈/一区二区双修</span></div>
+  <div class="member-bar"><span class="member-name">渊</span><span class="member-fill" style="width:96px"></span><span class="member-count">132条</span><span class="member-desc">零氪活跃/大凉</span></div>
+  <div class="member-bar"><span class="member-name">●。樹o、</span><span class="member-fill" style="width:57px"></span><span class="member-count">78条</span><span class="member-desc">群管陈云河/深度互动</span></div>
+  <div class="member-bar"><span class="member-name">朗朗</span><span class="member-fill" style="width:45px"></span><span class="member-count">62条</span><span class="member-desc">大唐/化神/组织联盟</span></div>
+  <div class="member-bar"><span class="member-name">雾随雨落</span><span class="member-fill" style="width:44px"></span><span class="member-count">61条</span><span class="member-desc">零氪420w/技术流</span></div>
+  <div class="member-bar"><span class="member-name">华瑾</span><span class="member-fill" style="width:43px"></span><span class="member-count">59条</span><span class="member-desc">重生诉求/典型卡级代表</span></div>
+</div>
+
+<!-- 📝 玩家反馈 -->
+<div class="card">
+  <div class="card-title">📝 玩家反馈汇总 <span class="badge">14项</span></div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🔴 严重</span><strong>修士不能重生/丹药不能重置</strong> — 华瑾等多人反复诉求，陈云河称影响太大暂不能做</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🔴 严重</span><strong>小天师皮肤概率过低</strong> — L花3万玉未出，多人投入数千无果，考虑弃坑</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>国家阵营严重失衡</strong> — 大唐独大，大理/大凉被系统推荐坑，要求转国</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>灵气系统不合理</strong> — 全程平A不能回蓝，"修仙游戏连蓝都没有"</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>BOSS死亡无奖励</strong> — 抗伤死了复活期间BOSS被队友打完→0奖励</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>商城商品种类太少</strong> — 仅3个礼包，建议增加仙玉可购买材</div>
+  <div class="feedback-item"><span class="fb-status fb-progress">🟡 建议</span><strong>活动日历缺失</strong> — 雾随雨落提，陈云河已收录</div>
+  <div class="feedback-item"><span class="fb-status fb-progress">🟡 建议</span><strong>缺乏攻略/引导</strong> — 大量重复提问暗号、养谁、怎么突破</div>
+  <div class="feedback-item"><span class="fb-status fb-progress">🟡 建议</span><strong>离线挂机产出为零</strong> — 哟哟建议增加离线资源收益</div>
+  <div class="feedback-item"><span class="fb-status fb-progress">🟡 建议</span><strong>限时活动太像打卡上班</strong> — 建议不限时+次数限制</div>
+  <div class="feedback-item"><span class="fb-status fb-done">🟢 已上线</span><strong>采集/传道十连优化</strong> — 17:00更新，默认十次，月卡一键，玩家好评</div>
+  <div class="feedback-item"><span class="fb-status fb-done">🟢 已解决</span><strong>传功次数提升</strong> — 首赛季3次（D1遗留问题确认修复）</div>
+</div>
+
+<!-- 💡 冷知识 -->
+<div class="card">
+  <div class="card-title">💡 游戏冷知识 <span class="badge">社群智囊</span></div>
+  <div class="topic-card" style="border-left-color:#6366f1;">
+    <div class="topic-desc">
+      🎫 <strong>兑换码</strong>：VIP666 · VIP777 · VIP888 · SVIP666 · SVIP888 · JQQYHL（加群福利）<br>
+      🔑 <strong>暗号依旧</strong>：阿爹笑，拍我腰，男儿立志在远方（建议先看剧情）<br>
+      🎯 <strong>零氪元婴公式</strong>：集中养主角/张道灵，不乱升其他角色，剧情全清+活动兑换<br>
+      👥 <strong>培养建议</strong>：有皮肤→小天师 | 月卡→张道灵 | 年卡→江剑臣 | 零氪→主角<br>
+      🏠 <strong>国家选择</strong>：⚠️ 不要听系统推荐！大唐目前最强<br>
+      ⚔️ <strong>国战规则</strong>：30日中午开打，非互殴阶段有"解救百姓"活动<br>
+      🧊 <strong>灵气恢复</strong>：打小怪/吃药，神通限30次用完只能平A<br>
+      📖 <strong>剧情彩蛋</strong>：黑白毛是李慕白+王长生童年，童谣为团队原创<br>
+      🔄 <strong>传功</strong>：首赛季3次，创角24小时后可传<br>
+      🏙️ <strong>二区</strong>：10点开放，大唐霸榜，氪金力度不输一区<br>
+      💡 <strong>BOSS技巧</strong>：半血可撤退重进补满状态，不用硬扛到死
+    </div>
+  </div>
+</div>
+
+<!-- 📊 数据洞察 -->
+<div class="card">
+  <div class="card-title">📊 数据洞察 <span class="badge">风险 & 亮点</span></div>
+  <div class="insight-grid">
+    <div>
+      <div style="font-size:13px;font-weight:600;color:#f87171;margin-bottom:8px;">🚨 主要风险</div>
+      <div class="risk-item"><span class="risk-dot risk-red"></span><strong>元婴卡级批量劝退</strong> — 无重生+无引导=新手大面积卡关，华瑾等带负面情绪</div>
+      <div class="risk-item"><span class="risk-dot risk-red"></span><strong>抽奖概率信任崩溃</strong> — L等中R投入数千无果，付费意愿持续下降</div>
+      <div class="risk-item"><span class="risk-dot risk-red"></span><strong>国家失衡固化</strong> — 二区也是大唐独大，弱势方国战直接躺平</div>
+      <div class="risk-item"><span class="risk-dot risk-yellow"></span><strong>灵气系统与修仙主题矛盾</strong> — "修仙游戏只能平A"是预期错位</div>
+      <div class="risk-item"><span class="risk-dot risk-yellow"></span><strong>商城商品单一</strong> — 付费转化渠道有限</div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:#34d399;margin-bottom:8px;">✅ 可取之处</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>更新响应神速</strong> — 抱怨→17:00上线十连/一键采集，<24h</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>剧情口碑爆棚</strong> — 多数玩家主动好评，核心留存动力</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>群管深度互动</strong> — 陈云河聊伏笔剧情，拉近运营距离感</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>社群自运转</strong> — 哟哟等主动解答重复问题，降低运营成本</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>"暗号"社交货币</strong> — 每日数十次传播，增强群活跃</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>态度积极获认可</strong> — "在优化了"、"在讨论了"让玩家感觉被重视</div>
+    </div>
+  </div>
+</div>
+
+<!-- 🆚 两日对比 -->
+<div class="card">
+  <div class="card-title">🆚 首日 vs 次日 对比 <span class="badge">关键变化</span></div>
+  <table style="width:100%;font-size:12px;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+      <th style="text-align:left;padding:8px 4px;color:#94a3b8;">维度</th>
+      <th style="text-align:center;padding:8px 4px;color:#94a3b8;">5月28日（首日）</th>
+      <th style="text-align:center;padding:8px 4px;color:#94a3b8;">5月29日（次日）</th>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">消息量</td>
+      <td style="text-align:center;color:#e2e8f0;">600条</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">1933条 ↑222%</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">参与人数</td>
+      <td style="text-align:center;color:#e2e8f0;">35人</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">105人 ↑200%</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">新人入群</td>
+      <td style="text-align:center;color:#e2e8f0;">102人</td>
+      <td style="text-align:center;color:#ef4444;">0人</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">核心话题</td>
+      <td style="text-align:center;color:#e2e8f0;">传功限制、充值竞争</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">元婴卡级、二区开放、抽奖概率</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">最活跃玩家</td>
+      <td style="text-align:center;color:#e2e8f0;">雍和（88条）</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">天空飘来五个字（412条）</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">运营响应</td>
+      <td style="text-align:center;color:#e2e8f0;">传功缩短至24h</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">采集十连+一键 ✅</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 4px;">负面情绪焦点</td>
+      <td style="text-align:center;color:#e2e8f0;">佩恩（大R养错角色）</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">华瑾等大量新手（卡元婴）</td>
+    </tr>
+  </table>
+</div>
+
+<div class="footer-text">
+  📊 NapCatQQ 群聊记录 · 《修行那些年》官方交流群（977805513）<br>
+  2026-05-29 · 00:00 ~ 23:52 · 共1933条文本消息 · 分析报告自动生成
+</div>
+</div>
+</body>
+</html>
