@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《修行那些年》5月30日 · 精装分析报告</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%); color:#e2e8f0; padding:20px; }
+.container { max-width:900px; margin:0 auto; }
+.header { text-align:center; padding:40px 20px 30px; background:linear-gradient(135deg,#1e3a5f 0%,#0f2027 100%); border-radius:20px; margin-bottom:24px; border:1px solid rgba(255,255,255,0.06); }
+.header h1 { font-size:22px; font-weight:700; background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:6px; }
+.header .sub { font-size:13px; color:#94a3b8; }
+.card { background:linear-gradient(135deg,#1e293b 0%,#1a2235 100%); border-radius:16px; padding:24px; margin-bottom:16px; border:1px solid rgba(255,255,255,0.06); }
+.card-title { font-size:15px; font-weight:700; color:#60a5fa; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.card-title .badge { background:#334155; color:#94a3b8; font-size:11px; padding:1px 10px; border-radius:10px; font-weight:400; }
+.stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; }
+.stat-item { text-align:center; padding:14px 8px; background:rgba(255,255,255,0.03); border-radius:12px; }
+.stat-num { font-size:28px; font-weight:700; color:#f1f5f9; }
+.stat-label { font-size:11px; color:#94a3b8; margin-top:2px; }
+.hour-bar { display:flex; align-items:center; margin:3px 0; font-size:12px; }
+.hour-label { width:32px; color:#94a3b8; flex-shrink:0; }
+.hour-fill { height:18px; background:linear-gradient(90deg,#3b82f6,#8b5cf6); border-radius:3px; min-width:4px; flex-shrink:0; }
+.hour-count { color:#94a3b8; margin-left:6px; white-space:nowrap; }
+.hour-desc { font-size:10px; color:#64748b; margin-left:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.topic-card { background:rgba(255,255,255,0.03); border-radius:12px; padding:16px; margin-bottom:10px; border-left:3px solid #3b82f6; }
+.topic-card.red { border-left-color:#ef4444; }
+.topic-card.green { border-left-color:#22c55e; }
+.topic-card.yellow { border-left-color:#eab308; }
+.topic-card.purple { border-left-color:#a855f7; }
+.topic-title { font-size:14px; font-weight:600; margin-bottom:6px; color:#f1f5f9; }
+.topic-desc { font-size:12px; color:#94a3b8; line-height:1.7; }
+.topic-tag { display:inline-block; font-size:10px; padding:1px 8px; border-radius:8px; margin-bottom:6px; }
+.tag-red { background:rgba(239,68,68,0.15); color:#fca5a5; }
+.tag-green { background:rgba(34,197,94,0.15); color:#86efac; }
+.tag-yellow { background:rgba(234,179,8,0.15); color:#fde047; }
+.tag-purple { background:rgba(168,85,247,0.15); color:#d8b4fe; }
+.member-bar { display:flex; align-items:center; margin:3px 0; font-size:12px; }
+.member-name { width:90px; flex-shrink:0; color:#e2e8f0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.member-fill { height:16px; background:linear-gradient(90deg,#6366f1,#a855f7); border-radius:3px; min-width:4px; flex-shrink:0; }
+.member-count { color:#94a3b8; margin-left:6px; white-space:nowrap; }
+.member-desc { font-size:10px; color:#64748b; margin-left:6px; }
+.feedback-item { padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:12px; line-height:1.6; }
+.feedback-item:last-child { border-bottom:none; }
+.fb-status { display:inline-block; font-size:10px; padding:0 6px; border-radius:4px; margin-right:6px; }
+.fb-done { background:rgba(34,197,94,0.15); color:#86efac; }
+.fb-warn { background:rgba(234,179,8,0.15); color:#fde047; }
+.fb-progress { background:rgba(59,130,246,0.15); color:#93c5fd; }
+.insight-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:600px) { .insight-grid { grid-template-columns:1fr; } body { padding:10px; } .card { padding:16px; } .member-name { width:70px; } .stat-grid { grid-template-columns:repeat(3,1fr); } }
+.risk-item { font-size:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); color:#94a3b8; }
+.pos-item { font-size:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); color:#94a3b8; }
+.risk-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+.risk-red { background:#ef4444; }
+.risk-yellow { background:#eab308; }
+.risk-green { background:#22c55e; }
+.cat-bar { display:flex; align-items:center; margin:4px 0; font-size:12px; }
+.cat-label { width:110px; flex-shrink:0; color:#e2e8f0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.cat-fill { height:18px; background:linear-gradient(90deg,#3b82f6,#06b6d4); border-radius:3px; min-width:4px; flex-shrink:0; }
+.cat-count { color:#94a3b8; margin-left:6px; white-space:nowrap; }
+.kw-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.kw-item { background:rgba(59,130,246,0.1); color:#93c5fd; font-size:11px; padding:2px 10px; border-radius:12px; }
+.footer-text { text-align:center; font-size:10px; color:#475569; padding:20px 0 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🎮 《修行那些年》5月30日 · 群聊精装分析报告</h1>
+  <div class="sub">开服第三日 · 00:13 ~ 23:59 · 共1039条文本消息 · 72人参与</div>
+</div>
+
+<!-- 📊 数据概览 -->
+<div class="card">
+  <div class="card-title">📊 数据概览 <span class="badge">与次日对比</span></div>
+  <div class="stat-grid">
+    <div class="stat-item"><div class="stat-num">1,039</div><div class="stat-label">文本消息 ↓46%</div></div>
+    <div class="stat-item"><div class="stat-num">107</div><div class="stat-label">图片消息 ↓38%</div></div>
+    <div class="stat-item"><div class="stat-num">72</div><div class="stat-label">发言人数 ↓31%</div></div>
+    <div class="stat-item"><div class="stat-num">123</div><div class="stat-label">新人入群 ↓65%</div></div>
+    <div class="stat-item"><div class="stat-num">338</div><div class="stat-label">峰值 条/时 🌙</div></div>
+    <div class="stat-item"><div class="stat-num">1332</div><div class="stat-label">总事件数</div></div>
+  </div>
+</div>
+
+<!-- 📈 时段活跃 -->
+<div class="card">
+  <div class="card-title">📈 时段活跃 <span class="badge">峰值 23:00 · 338条</span></div>
+  <div class="hour-bar"><span class="hour-label">00</span><span class="hour-fill" style="width:7px"></span><span class="hour-count">8</span></div>
+  <div class="hour-bar"><span class="hour-label">01</span><span class="hour-fill" style="width:5px"></span><span class="hour-count">6</span></div>
+  <div class="hour-bar"><span class="hour-label">02</span><span class="hour-fill" style="width:4px"></span><span class="hour-count">2</span></div>
+  <div class="hour-bar"><span class="hour-label">03</span><span class="hour-fill" style="width:7px"></span><span class="hour-count">8</span></div>
+  <div class="hour-bar"><span class="hour-label">04</span><span class="hour-fill" style="width:4px"></span><span class="hour-count">3</span></div>
+  <div class="hour-bar"><span class="hour-label">06</span><span class="hour-fill" style="width:4px"></span><span class="hour-count">3</span></div>
+  <div class="hour-bar"><span class="hour-label">07</span><span class="hour-fill" style="width:8px"></span><span class="hour-count">10</span></div>
+  <div class="hour-bar"><span class="hour-label">08</span><span class="hour-fill" style="width:9px"></span><span class="hour-count">11</span></div>
+  <div class="hour-bar"><span class="hour-label">09</span><span class="hour-fill" style="width:47px"></span><span class="hour-count">54</span></div>
+  <div class="hour-bar"><span class="hour-label">10</span><span class="hour-fill" style="width:142px"></span><span class="hour-count">160</span><span class="hour-desc">💬 国战预热讨论</span></div>
+  <div class="hour-bar"><span class="hour-label">11</span><span class="hour-fill" style="width:21px"></span><span class="hour-count">24</span></div>
+  <div class="hour-bar"><span class="hour-label">12</span><span class="hour-fill" style="width:29px"></span><span class="hour-count">33</span><span class="hour-desc">⚔️ 国战12点开打</span></div>
+  <div class="hour-bar"><span class="hour-label">13</span><span class="hour-fill" style="width:55px"></span><span class="hour-count">62</span><span class="hour-desc">🎯 国战玩法困惑</span></div>
+  <div class="hour-bar"><span class="hour-label">14</span><span class="hour-fill" style="width:26px"></span><span class="hour-count">30</span></div>
+  <div class="hour-bar"><span class="hour-label">15</span><span class="hour-fill" style="width:50px"></span><span class="hour-count">57</span></div>
+  <div class="hour-bar"><span class="hour-label">16</span><span class="hour-fill" style="width:19px"></span><span class="hour-count">22</span></div>
+  <div class="hour-bar"><span class="hour-label">17</span><span class="hour-fill" style="width:31px"></span><span class="hour-count">36</span></div>
+  <div class="hour-bar"><span class="hour-label">18</span><span class="hour-fill" style="width:34px"></span><span class="hour-count">39</span><span class="hour-desc">🗺️ 国战领地争夺</span></div>
+  <div class="hour-bar"><span class="hour-label">19</span><span class="hour-fill" style="width:63px"></span><span class="hour-count">72</span><span class="hour-desc">💬 化神突破讨论</span></div>
+  <div class="hour-bar"><span class="hour-label">20</span><span class="hour-fill" style="width:59px"></span><span class="hour-count">67</span></div>
+  <div class="hour-bar"><span class="hour-label">21</span><span class="hour-fill" style="width:67px"></span><span class="hour-count">76</span></div>
+  <div class="hour-bar"><span class="hour-label">22</span><span class="hour-fill" style="width:78px"></span><span class="hour-count">88</span></div>
+  <div class="hour-bar"><span class="hour-label">23</span><span class="hour-fill" style="width:300px"></span><span class="hour-count">338</span><span class="hour-desc">🌙 深夜化神/氪金讨论</span></div>
+</div>
+
+<!-- 🔑 话题分类 -->
+<div class="card">
+  <div class="card-title">🔑 话题分类统计 <span class="badge">108次最高</span></div>
+  <div class="cat-bar"><span class="cat-label">⚡元婴/卡级</span><span class="cat-fill" style="width:260px"></span><span class="cat-count">108次</span></div>
+  <div class="cat-bar"><span class="cat-label">💰氪金/付费</span><span class="cat-fill" style="width:226px"></span><span class="cat-count">94次</span></div>
+  <div class="cat-bar"><span class="cat-label">🖱️肝度/操作</span><span class="cat-fill" style="width:173px"></span><span class="cat-count">72次</span></div>
+  <div class="cat-bar"><span class="cat-label">⚔️国战/阵营</span><span class="cat-fill" style="width:113px"></span><span class="cat-count">47次</span></div>
+  <div class="cat-bar"><span class="cat-label">🎲概率/抽奖</span><span class="cat-fill" style="width:81px"></span><span class="cat-count">34次</span></div>
+  <div class="cat-bar"><span class="cat-label">🎨剧情/美术</span><span class="cat-fill" style="width:62px"></span><span class="cat-count">26次</span></div>
+  <div class="cat-bar"><span class="cat-label">📝建议反馈</span><span class="cat-fill" style="width:52px"></span><span class="cat-count">22次</span></div>
+  <div class="cat-bar"><span class="cat-label">🏙️二区/新区</span><span class="cat-fill" style="width:52px"></span><span class="cat-count">22次</span></div>
+  <div class="cat-bar"><span class="cat-label">⚡灵气/战斗</span><span class="cat-fill" style="width:43px"></span><span class="cat-count">18次</span></div>
+  <div class="kw-list">
+    <span class="kw-item">兑换码(6)</span><span class="kw-item">剧情(6)</span><span class="kw-item">化神(6)</span>
+    <span class="kw-item">服了(5)</span><span class="kw-item">阿爹笑(4)</span><span class="kw-item">拍我腰(4)</span>
+    <span class="kw-item">男儿立志(4)</span><span class="kw-item">在远方(4)</span><span class="kw-item">国战打不(4)</span>
+  </div>
+</div>
+
+<!-- 🔥 热门话题 -->
+<div class="card">
+  <div class="card-title">🔥 热门话题 <span class="badge">6个话题</span></div>
+
+  <div class="topic-card red">
+    <span class="topic-tag tag-red">★ 今日核心事件</span>
+    <div class="topic-title">⚔️ 国战正式上线 · 玩法认知鸿沟</div>
+    <div class="topic-desc">
+      12:00 国战准时开打，但大量玩家不知道规则。贰佰："今天几点开国战？"、毛民9527："这国战是啥意思"、
+      哟哟："国战也是扯淡，打小兵也没有灵气恢复"。核心问题是：非占领地块无法进入战场、
+      国战不回复灵气、弱国玩家直接躺平。王孝语在19:06发布详细说明："在国战开打前也是较长时间的准备"。
+      从百草园："国战打不了一点"。房东："这国战有力气"（正面评价）。
+      氪佬和大唐阵营在国战中占据绝对优势，弱势阵营体验不佳。
+    </div>
+  </div>
+
+  <div class="topic-card red">
+    <span class="topic-tag tag-red">★ 热度最高</span>
+    <div class="topic-title">⚡ 化神突破 · 首批氪佬达到新境界</div>
+    <div class="topic-desc">
+      第三天已有氪佬突破元婴达到化神。贰佰技术分析："一曲第三天，已经有几个氪佬上化神了"、
+      "看到朱鸡蛋能领就领，能买就买，很快就能上化神"、"第一天干一点上元婴，氪的多第二天上化神"。
+      毛民9527："元婴战化神1换1"、"我在磨化神"。
+      酷乐猫："二区目前还没有化神的"。贰佰："化神大佬不一定进群了，很高冷"。
+      零氪玩家与氪佬的进度差距开始显现，但多数玩家仍在元婴阶段挣扎。
+    </div>
+  </div>
+
+  <div class="topic-card green">
+    <span class="topic-tag tag-green">✅ 运营亮点</span>
+    <div class="topic-title">📢 王孝语活跃 · 及时答疑与兑换码</div>
+    <div class="topic-desc">
+      王孝语在国战上线当天持续活跃：在群内详细解释兑换码使用方式
+      （加群福利码JQQYHL、VIP666/VIP777/VIP888），回应国战规则问题
+      （"未占领地块无法进入"），积极采纳建议。玩家反馈兑换码需求旺盛
+      （"有兑换码吗哥哥姐姐们"、"去哪里找兑换码"），王孝语快速响应。
+      与D29相比，运营响应速度保持，但"建议→立即上线"的反馈闭环不如D29高效。
+    </div>
+  </div>
+
+  <div class="topic-card yellow">
+    <span class="topic-tag tag-yellow">🟡 内容需求</span>
+    <div class="topic-title">📖 剧情断档 · "快增加后续啊"</div>
+    <div class="topic-desc">
+      多位玩家反馈剧情推进到金丹期后无后续内容。毛民9527："剧情现在才金丹，快增加后续的啊"。
+      贰佰："自动开图打最终BOSS不会自动打，还要自己一个一个点"。
+      毛民9527反馈BOSS血条显示异常："血量变成了白条"、"像护盾一样的"。
+      开服三天后，内容消耗速度超出供给，中度以上玩家开始触及游戏内容边界。
+    </div>
+  </div>
+
+  <div class="topic-card yellow">
+    <span class="topic-tag tag-yellow">🟡 经济关注</span>
+    <div class="topic-title">💰 氪金性价比讨论 · 付费分层清晰</div>
+    <div class="topic-desc">
+      毛民9527成新晋"攻略导师"：给出清晰的付费分层建议："不氪就养小天师"、
+      "氪得起的就养年卡那个"、"单纯氪钻石又没有性价比"、"氪天帝"。
+      贰佰认同："一天氪2氪才够玩"。零氪→月卡→年卡→氪佬的分层消费结构逐渐成型，
+      但"没多少东西氪，除非你硬氪钻石"暗示付费内容供给不足。
+      哟哟持续关注灵气问题，讨论热度下降但未解决。
+    </div>
+  </div>
+
+  <div class="topic-card purple">
+    <span class="topic-tag tag-purple">🟢 社区结构</span>
+    <div class="topic-title">👥 权力交接 · 贰佰成新社群核心</div>
+    <div class="topic-desc">
+      D29的"天空飘来五个字"（412条）沉寂，贰佰以194条成为D30最活跃成员。
+      贰佰角色转变明显：从D29的普通玩家到D30主动输出攻略、解答化神问题、
+      讨论氪金策略。毛民9527（138条）同样以实用攻略见长，与贰佰形成"双核攻略组"。
+      亮（113条）以简短问题互动为主。社区从D29的情绪宣泄转向D30的实用讨论，
+      标志着社群从"开服热闹期"进入"稳定成长期"。
+    </div>
+  </div>
+</div>
+
+<!-- 👤 最活跃成员 -->
+<div class="card">
+  <div class="card-title">👤 最活跃成员 Top 8 <span class="badge">贰佰 194条</span></div>
+  <div class="member-bar"><span class="member-name">贰佰</span><span class="member-fill" style="width:300px"></span><span class="member-count">194条</span><span class="member-desc">新社群核心/化神攻略/深夜活跃</span></div>
+  <div class="member-bar"><span class="member-name">毛民9527</span><span class="member-fill" style="width:213px"></span><span class="member-count">138条</span><span class="member-desc">攻略导师/BOSS机制/氪金建议</span></div>
+  <div class="member-bar"><span class="member-name">亮</span><span class="member-fill" style="width:174px"></span><span class="member-count">113条</span><span class="member-desc">高频互动/简短提问</span></div>
+  <div class="member-bar"><span class="member-name">、</span><span class="member-fill" style="width:83px"></span><span class="member-count">54条</span><span class="member-desc">深夜活跃</span></div>
+  <div class="member-bar"><span class="member-name">哟哟</span><span class="member-fill" style="width:61px"></span><span class="member-count">40条</span><span class="member-desc">持续关注灵气/国战机制</span></div>
+  <div class="member-bar"><span class="member-name">渊</span><span class="member-fill" style="width:61px"></span><span class="member-count">40条</span><span class="member-desc">大凉/国战召集</span></div>
+  <div class="member-bar"><span class="member-name">坟</span><span class="member-fill" style="width:60px"></span><span class="member-count">39条</span><span class="member-desc">氪金咨询/化神提问</span></div>
+  <div class="member-bar"><span class="member-name">房东</span><span class="member-fill" style="width:55px"></span><span class="member-count">36条</span><span class="member-desc">国战正面评价/日常讨论</span></div>
+</div>
+
+<!-- 📝 玩家反馈 -->
+<div class="card">
+  <div class="card-title">📝 玩家反馈汇总 <span class="badge">10项</span></div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🔴 待解决</span><strong>国战规则不明</strong> — 大量玩家不懂领地占领机制，非占领地块无法参战</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🔴 待解决</span><strong>国战不回复灵气</strong> — 哟哟反馈"打小兵也没有灵气恢复"，PK体验差</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>剧情金丹后断档</strong> — 毛民9527等要求增加后续剧情内容</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>自动开图不能自动打BOSS</strong> — 毛民9527建议优化最终BOSS自动战斗</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>BOSS血条白条异常</strong> — 毛民9527反馈护盾状态显示不清</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>商城可氪内容不足</strong> — "没多少东西氪"暗示付费内容已见底</div>
+  <div class="feedback-item"><span class="fb-status fb-warn">🟡 待解决</span><strong>零氪/月卡玩家化神无望</strong> — D30氪佬已化神，零氪仍卡元婴</div>
+  <div class="feedback-item"><span class="fb-status fb-progress">🟡 建议</span><strong>二区兑换码需求</strong> — 多次询问，王孝语已发布兑换码列表</div>
+  <div class="feedback-item"><span class="fb-status fb-progress">🟡 建议</span><strong>国战弱国体验</strong> — 大唐碾压，弱势阵营缺乏保护机制</div>
+  <div class="feedback-item"><span class="fb-status fb-done">🟢 已响应</span><strong>王孝语国战答疑</strong> — 主动发布规则说明和兑换码，运营态度获好评</div>
+</div>
+
+<!-- 💡 冷知识 -->
+<div class="card">
+  <div class="card-title">💡 D30新发现 <span class="badge">社群智囊</span></div>
+  <div class="topic-card" style="border-left-color:#6366f1;">
+    <div class="topic-desc">
+      🎫 <strong>兑换码持续有效</strong>：VIP666 · VIP777 · VIP888 · SVIP666 · SVIP888 · JQQYHL<br>
+      🔑 <strong>暗号依旧</strong>：阿爹笑，拍我腰，男儿立志在远方<br>
+      ⚡ <strong>化神条件</strong>：集中攒朱鸡蛋（能领就领能买就买），第一天元婴+氪金第二天可化神<br>
+      ⚔️ <strong>国战规则</strong>：需先占领地块才能进入战场，非占领区无法参战<br>
+      🧊 <strong>灵气不回复</strong>：国战打小兵也不回灵气，和平A一样消耗<br>
+      💰 <strong>氪金分层</strong>：零氪养小天师 | 微氪月卡养张道灵 | 年卡江剑臣 | 氪佬随意<br>
+      👥 <strong>二区进度</strong>：D30尚无化神玩家，进度晚于一区约1天<br>
+      📖 <strong>剧情提示</strong>：建议先看剧情再找暗号，体验更佳<br>
+      🛡️ <strong>BOSS技巧</strong>：半血可撤退重进，有白条护盾的BOSS需要持续输出<br>
+      🏠 <strong>国家选择</strong>：大唐最强，大理/大凉弱势，赛季重置可能合区
+    </div>
+  </div>
+</div>
+
+<!-- 📊 数据洞察 -->
+<div class="card">
+  <div class="card-title">📊 数据洞察 <span class="badge">风险 & 亮点</span></div>
+  <div class="insight-grid">
+    <div>
+      <div style="font-size:13px;font-weight:600;color:#f87171;margin-bottom:8px;">🚨 主要风险</div>
+      <div class="risk-item"><span class="risk-dot risk-red"></span><strong>国战认知门槛</strong> — 大量玩家不懂规则，弱势阵营直接躺平，可能加速流失</div>
+      <div class="risk-item"><span class="risk-dot risk-red"></span><strong>内容消耗过快</strong> — 剧情金丹断档、付费内容见底，开服3天触及天花板</div>
+      <div class="risk-item"><span class="risk-dot risk-red"></span><strong>氪佬与零氪断层</strong> — 化神 vs 元婴差距拉大，零氪玩家挫败感积累</div>
+      <div class="risk-item"><span class="risk-dot risk-yellow"></span><strong>国战灵气不回复</strong> — 技术问题持续未修复，影响核心PVP体验</div>
+      <div class="risk-item"><span class="risk-dot risk-yellow"></span><strong>活动参与度下降</strong> — D30峰值338条 vs D29峰值590条，活动热情自然衰减</div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:#34d399;margin-bottom:8px;">✅ 可取之处</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>新攻略组形成</strong> — 贰佰+毛民9527主动输出高质量攻略，降低运营压力</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>运营积极响应</strong> — 王孝语持续在群内答疑、发兑换码，维持信任</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>深夜活跃度高</strong> — 23:00成峰值，说明玩家沉浸度高、自发形成深夜社区</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>国战整体正向</strong> — 房东等玩家给出好评，"这国战有力气"是正面信号</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>付费分层自然形成</strong> — 零氪→月卡→年卡→氪佬定位清晰，商业化基础好</div>
+      <div class="pos-item"><span class="risk-dot risk-green"></span><strong>客服形象鲜活</strong> — 王孝语二次元萌系人设("~呢")受玩家接受</div>
+    </div>
+  </div>
+</div>
+
+<!-- 🆚 三日对比 -->
+<div class="card">
+  <div class="card-title">🆚 开服三日对比 <span class="badge">关键变化</span></div>
+  <table style="width:100%;font-size:12px;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+      <th style="text-align:left;padding:8px 4px;color:#94a3b8;">维度</th>
+      <th style="text-align:center;padding:8px 4px;color:#94a3b8;">5月28日</th>
+      <th style="text-align:center;padding:8px 4px;color:#94a3b8;">5月29日</th>
+      <th style="text-align:center;padding:8px 4px;color:#94a3b8;">5月30日</th>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">消息量</td>
+      <td style="text-align:center;color:#94a3b8;">600</td>
+      <td style="text-align:center;color:#e2e8f0;">1,933</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">1,039 ↓46%</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">参与人数</td>
+      <td style="text-align:center;color:#94a3b8;">35</td>
+      <td style="text-align:center;color:#e2e8f0;">105</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">72 ↓31%</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">新人入群</td>
+      <td style="text-align:center;color:#94a3b8;">102</td>
+      <td style="text-align:center;color:#22c55e;">356</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">123 ↓65%</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">峰值时段</td>
+      <td style="text-align:center;color:#94a3b8;">18:00</td>
+      <td style="text-align:center;color:#e2e8f0;">17:00 🔥</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">23:00 🌙</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">核心话题</td>
+      <td style="text-align:center;color:#94a3b8;">传功、充值</td>
+      <td style="text-align:center;color:#e2e8f0;">元婴卡级、二区</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">国战、化神</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+      <td style="padding:6px 4px;">最活跃玩家</td>
+      <td style="text-align:center;color:#94a3b8;">雍和</td>
+      <td style="text-align:center;color:#e2e8f0;">天空飘来五个字</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">贰佰</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 4px;">社区情绪</td>
+      <td style="text-align:center;color:#94a3b8;">🔥 兴奋</td>
+      <td style="text-align:center;color:#f59e0b;">😤 焦虑</td>
+      <td style="text-align:center;color:#e2e8f0;font-weight:600;">🤔 探索</td>
+    </tr>
+  </table>
+</div>
+
+<div class="footer-text">
+  📊 NapCatQQ 群聊记录 · 《修行那些年》官方交流群 977805513<br>
+  2026-05-30 · 00:13 ~ 23:59 · 共1039条文本消息 · 分析报告自动生成
+</div>
+</div>
+</body>
+</html>
